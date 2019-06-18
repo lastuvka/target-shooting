@@ -19,6 +19,7 @@ class Point {
     }
 
     /**
+     * Calculate distance between this point and a point in argument
      *
      * @param {Point} point
      * @returns {number}

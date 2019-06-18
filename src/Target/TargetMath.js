@@ -1,13 +1,14 @@
-import Point from './Point';
+import Point from '../Point/Point';
 
 /**
- * Class for calculating shooting on target
+ * Class for calculating shooting on the target
  */
 class TargetMath {
     /**
+     * Init class with the point of center and the radius
      *
-     * @param {Point} center - point in middle of target
-     * @param {number} r -radius
+     * @param {Point} center - point in the middle of target
+     * @param {number} r - radius
      */
     constructor(center, r) {
         if (!(center instanceof Point)){
@@ -18,7 +19,7 @@ class TargetMath {
     }
 
     /**
-     * Check if point is in Target
+     * Check if the point is in the Target
      *
      * @param {Point} point
      * @returns {boolean}

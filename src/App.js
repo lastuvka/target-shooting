@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import TargetBox from './Target/TargetBox';
+import TargetBox from './TargetBox/TargetBox';
 import TargetInfo from './Target/TargetInfo';
 
 
@@ -15,7 +15,7 @@ class App extends React.Component {
 
     setInfo(info) {
         this.setState({
-            info: info,
+            info,
         });
     }
 

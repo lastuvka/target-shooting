@@ -1,11 +1,13 @@
 import React from 'react';
 import './Target.css';
 
-function Target({center, radius}) {
+function Target({radius}) {
 
     return (
         <div className="Target" style={{width: radius*2, height: radius*2}} />
     );
 }
+
+
 
 export default Target;

@@ -1,4 +1,4 @@
-import Point from './Point';
+import Point from '../Point/Point';
 import TargetMath from "./TargetMath";
 
 it('Is point in target', () => {
