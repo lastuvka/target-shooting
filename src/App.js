@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TargetBox from './Target/TargetBox';
+import TargetInfo from './Target/TargetInfo';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            info: {},
+        };
+    }
+
+    setInfo(info) {
+        this.setState({
+            info: info,
+        });
+    }
+
+    render() {
+        const info = this.state.info;
+        return (
+            <div className="App">
+                <TargetBox setInfo={this.setInfo.bind(this)}/>
+                <TargetInfo info={info}/>
+            </div>
+        );
+    }
 }
 
 export default App;
