@@ -18,4 +18,13 @@ it('calculate area of intersection', () => {
 
     rect = {left: 150, top: 150, right: 250, bottom: 201};
     expect(viewportMath.intersectionArea(rect)).toBe(0);
+
+    rect = {left: -50, top: -100, right: 250, bottom: 101};
+    expect(viewportMath.intersectionArea(rect)).toBe(10000);
+
+    rect = {left: -50, top: -100, right: 50, bottom: 50};
+    expect(viewportMath.intersectionArea(rect)).toBe(2500);
+
+    rect = {left: 50, top: 0, right: 100, bottom: 100};
+    expect(viewportMath.intersectionArea(rect)).toBe(5000);
 });

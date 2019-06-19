@@ -13,19 +13,20 @@ class ViewportMath {
     }
 
     /**
-     * Return intersection area
+     * Return an intersection area
      *
-     * @param { DOMRect} rect is allowed DOMRect-like object
+     * @param { DOMRect} rect is allowed the DOMRect-like object
      * @returns {number}
      */
-    intersectionArea({left, top, right, bottom}) {
-        if (left >= this.width || top >= this.height) {
-            return 0;
-        }
+    intersectionArea({left = 0, top = 0, right = 0, bottom = 0}) {
+        let leftCropped = Math.max(left,0);
+        let topCropped = Math.max(top, 0);
         let rightCropped = Math.min(right, this.width);
         let bottomCropped = Math.min(bottom, this.height);
-
-        return (rightCropped - left) * (bottomCropped - top);
+        if (leftCropped >= rightCropped || topCropped >= bottomCropped) {
+            return 0;
+        }
+        return (rightCropped - leftCropped) * (bottomCropped - topCropped);
     }
 
 }
