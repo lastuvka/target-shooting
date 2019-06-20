@@ -7,14 +7,16 @@ import TargetMath from "../Target/TargetMath";
 import './TargetBox.css';
 
 const TARGET_DEFAULT_RADIUS = 100;
+const TARGET_BOX_DEFAULT_PADDING = 20;
 
 class TargetBox extends React.Component {
     constructor(props) {
         super(props);
 
-        this.boxSize = Math.round(this.props.radius * 2.3);
+        this.radius = Math.abs(this.props.radius);
+        this.boxSize = this.radius * 2 + Math.abs(this.props.padding);
         let pointCenter = new Point(this.boxSize / 2, this.boxSize / 2);
-        this.targetMath = new TargetMath(pointCenter, this.props.radius);
+        this.targetMath = new TargetMath(pointCenter, this.radius);
 
         let defautlPosition = new Point(0, 0);
         this.props.setInfo(this.getInfo(defautlPosition));
@@ -23,7 +25,6 @@ class TargetBox extends React.Component {
     onMouseMove(e) {
         let rect = e.currentTarget.getBoundingClientRect();
         let newPosition = new Point(e.clientX - rect.left, e.clientY - rect.top);
-
         this.props.setInfo(this.getInfo(newPosition));
     }
 
@@ -38,7 +39,7 @@ class TargetBox extends React.Component {
         return (
             <div className="TargetBox" onMouseMove={this.onMouseMove.bind(this)}
                  style={{width: this.boxSize, height: this.boxSize}}>
-                <Target radius={this.props.radius}/>
+                <Target radius={this.radius}/>
             </div>
         );
     }
@@ -46,11 +47,13 @@ class TargetBox extends React.Component {
 
 TargetBox.propTypes = {
     radius: PropTypes.number,
-    setInfo: PropTypes.func
+    padding: PropTypes.number,
+    setInfo: PropTypes.func,
 };
 
 TargetBox.defaultProps = {
     radius: TARGET_DEFAULT_RADIUS,
+    padding: TARGET_BOX_DEFAULT_PADDING,
     setInfo: function () {
     },
 };

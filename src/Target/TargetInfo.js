@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function TargetInfo({info}) {
+function TargetInfo({info = {}}) {
 
     return (
         <div className="TargetInfo">
